@@ -1,136 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DONATE - Agribank</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .agri-gradient { background: linear-gradient(135deg, #054a29 0%, #002b15 100%); }
-        .card-glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f8f4">
+<title>Gửi lời thương · Donate bằng QR</title>
+<style>
+:root{--ink:#17291e;--muted:#758078;--green:#16834b;--green-dark:#0e6338;--line:#e5eee6;--bg:#f5f8f4}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--ink);background:radial-gradient(ellipse at 10% 5%,#dff2e4,transparent 32rem),radial-gradient(ellipse at 92% 90%,#e8f2dc,transparent 30rem),var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+button,input{font:inherit}button{cursor:pointer}.page{width:min(100% - 32px,1050px);margin:auto;padding:30px 0 44px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:27px}.brand{display:flex;gap:10px;align-items:center;font-weight:750;letter-spacing:-.03em}.mark{display:grid;place-items:center;width:40px;height:40px;border-radius:14px;color:white;background:linear-gradient(145deg,#2eaa63,#0d6e3a);font-size:20px;box-shadow:0 7px 15px #16834b30}.secure{display:flex;gap:7px;align-items:center;color:#718077;font-size:12px}.secure svg{color:var(--green)}
+.layout{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:start}.intro{padding:18px 10px 0 4px}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid #d9ebde;border-radius:30px;background:#ffffffb8;color:var(--green-dark);font-size:11px;font-weight:750;letter-spacing:.04em}.dot{width:7px;height:7px;border-radius:50%;background:#42b76f;box-shadow:0 0 0 3px #e4f5e9}h1{max-width:530px;margin:20px 0 13px;font-size:clamp(39px,5.5vw,59px);line-height:1.02;letter-spacing:-.065em}h1 em{color:var(--green);font-style:normal}.lead{max-width:440px;margin:0;color:var(--muted);font-size:15px;line-height:1.7}.recipient{display:flex;align-items:center;gap:13px;max-width:450px;margin-top:30px;padding:15px;border:1px solid #dfeae1;border-radius:19px;background:#ffffffc9;box-shadow:0 8px 28px #2b573609}.bank{display:grid;flex:0 0 46px;place-items:center;height:46px;border-radius:15px;background:#edf7ef;color:var(--green);font-weight:850;letter-spacing:-.08em}.recipient-info{min-width:0;flex:1}.small-label{margin-bottom:4px;color:var(--muted);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase}.name{overflow:hidden;font-size:14px;font-weight:760;text-overflow:ellipsis;white-space:nowrap}.number{margin-top:3px;color:#69766e;font-size:12px}.check{color:#37a363}
+.card{padding:27px;border:1px solid #e5ede6;border-radius:26px;background:white;box-shadow:0 24px 65px #1d492e18,0 4px 15px #1d492e0d}.card h2{margin:0;font-size:21px;letter-spacing:-.04em}.subtitle{margin:6px 0 22px;color:var(--muted);font-size:13px;line-height:1.5}.label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;font-size:13px;font-weight:720}.optional{color:#99a49c;font-size:11px;font-weight:500}.amount-wrap{position:relative}.input{width:100%;min-height:51px;padding:0 14px;border:1px solid #e2eae3;border-radius:13px;outline:0;background:#fbfdfb;color:var(--ink);transition:.18s}.input:focus{border-color:#75bd8d;background:white;box-shadow:0 0 0 4px #269c5317}.amount{padding-right:58px;font-size:17px;font-weight:700}.unit{position:absolute;right:15px;top:50%;color:#89958d;font-size:12px;transform:translateY(-50%)}.quick-label{margin:12px 0 9px;color:#89948c;font-size:11px;font-weight:650}.quick{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}.quick button{padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:white;color:#46584c;font-size:12px;font-weight:700;transition:.16s}.quick button:hover,.quick button[aria-pressed=true]{border-color:#9cd2aa;background:#eff9f1;color:var(--green-dark)}.hint{margin:7px 0 18px;color:#9aa49c;font-size:11px}.create{display:flex;width:100%;min-height:53px;justify-content:center;align-items:center;gap:9px;border:0;border-radius:14px;background:linear-gradient(135deg,#1b9a55,#11703d);color:white;box-shadow:0 10px 20px #147e4133;font-size:14px;font-weight:760;transition:.18s}.create:hover{transform:translateY(-1px);box-shadow:0 13px 24px #147e4140}.create:disabled{cursor:wait;opacity:.8}
+.result{display:none;margin-top:21px;padding-top:20px;border-top:1px solid #edf1ed;animation:rise .3s ease both}.result.visible{display:block}.result h3{margin:0 0 5px;font-size:14px;text-align:center}.description{margin:0 0 14px;color:var(--muted);font-size:12px;text-align:center}.qr-frame{position:relative;display:grid;place-items:center;width:min(100%,255px);min-height:255px;margin:0 auto 14px;padding:12px;border:1px solid #edf1ed;border-radius:19px;background:#fff}.qr-frame img{display:none;width:100%;aspect-ratio:1;object-fit:contain;border-radius:9px}.qr-frame img.ready{display:block}.loading{display:none;position:absolute;inset:0;place-items:center;border-radius:19px;background:#ffffffed;color:#52645a;font-size:12px;font-weight:650}.loading.active{display:grid}.spinner{width:24px;height:24px;margin:0 auto 9px;border:2px solid #d8eddd;border-top-color:var(--green);border-radius:50%;animation:spin .75s linear infinite}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.action{display:flex;min-height:43px;justify-content:center;align-items:center;gap:7px;border:1px solid #dfe9e1;border-radius:11px;background:white;color:#395345;font-size:11px;font-weight:700;text-decoration:none;transition:.16s}.action:hover{background:#f5faf6;border-color:#b5d9be}.action.primary{border-color:#d7ecdc;background:#eaf6ee;color:var(--green-dark)}.status{min-height:17px;margin:9px 0 0;color:#68766d;font-size:11px;text-align:center}.footer{margin:17px 0 0;color:#9aa49c;font-size:10px;line-height:1.55;text-align:center}.toast{position:fixed;z-index:2;right:20px;bottom:20px;padding:12px 15px;border-radius:12px;background:#183d29;color:white;box-shadow:0 10px 30px #0003;font-size:12px;opacity:0;pointer-events:none;transform:translateY(10px);transition:.2s}.toast.show{opacity:1;transform:translateY(0)}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.page{width:min(100% - 24px,530px);padding:20px 0 30px}.top{margin-bottom:17px}.secure{font-size:11px}.layout{grid-template-columns:1fr;gap:19px}.intro{padding:3px 3px 0}h1{margin:15px 0 10px;font-size:clamp(37px,10vw,49px)}.lead{font-size:14px}.recipient{margin-top:17px;padding:13px;border-radius:17px}.card{padding:22px 19px;border-radius:23px}.qr-frame{width:min(100%,245px);min-height:245px}}
+@media(max-width:370px){.brand{font-size:13px}.mark{width:35px;height:35px}.secure span{display:none}.card{padding-inline:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-between p-4 sm:p-6 antialiased">
-
-    <header class="w-full max-w-lg flex items-center justify-between py-4 mb-2">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-xl agri-gradient flex items-center justify-center shadow-lg border border-emerald-500/30">
-                <i class="fa-solid font-bold text-emerald-400 text-xl">D</i>
-            </div>
-            <div>
-                <h1 class="font-extrabold text-xl tracking-wider text-white">DONATE</h1>
-                <p class="text-xs text-slate-400 font-medium">Hỗ trợ Agribank & Tất cả ngân hàng</p>
-            </div>
+<body>
+<main class="page">
+  <header class="top">
+    <div class="brand"><div class="mark" aria-hidden="true">♡</div><span>Gửi lời thương</span></div>
+    <div class="secure"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 5 6v5c0 4.6 2.9 8.4 7 10 4.1-1.6 7-5.4 7-10V6l-7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>Chuyển khoản qua VietQR</span></div>
+  </header>
+  <div class="layout">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="eyebrow"><span class="dot"></span>MỘT CHÚT YÊU THƯƠNG, MỘT NGÀN ĐỘNG LỰC</div>
+      <h1 id="page-title">Gửi một chút <em>yêu thương</em></h1>
+      <p class="lead">Mỗi sự ủng hộ của bạn đều là nguồn động viên quý giá. Chọn số tiền, để lại lời nhắn và quét mã QR để gửi donate nhé!</p>
+      <div class="recipient">
+        <div class="bank" aria-hidden="true">Ag</div>
+        <div class="recipient-info"><div class="small-label">Tài khoản nhận</div><div class="name">LUONG THANH HA</div><div class="number">Agribank&nbsp; · &nbsp;7700205292060</div></div>
+        <svg class="check" width="21" height="21" viewBox="0 0 24 24" fill="none" aria-label="Thông tin tài khoản"><path d="M12 2.8 14.5 4l2.8-.1 1.1 2.5 2.3 1.6-.6 2.7.6 2.7-2.3 1.6-1.1 2.5-2.8-.1-2.5 1.2-2.5-1.2-2.8.1-1.1-2.5-2.3-1.6.6-2.7-.6-2.7 2.3-1.6 1.1-2.5 2.8.1L12 2.8Z" fill="currentColor"/><path d="m8.5 12.1 2.2 2.1 4.8-4.7" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+    </section>
+    <section class="card" aria-labelledby="form-title">
+      <h2 id="form-title">Tạo mã QR donate</h2>
+      <p class="subtitle">Điền thông tin bên dưới để tạo mã chuyển khoản riêng cho bạn.</p>
+      <form id="donate-form">
+        <label class="label" for="amount">Số tiền donate <span class="optional">Bắt buộc</span></label>
+        <div class="amount-wrap"><input class="input amount" id="amount" type="text" inputmode="numeric" autocomplete="off" placeholder="Ví dụ: 50.000" required><span class="unit">VND</span></div>
+        <div class="quick-label">Chọn nhanh</div>
+        <div class="quick" aria-label="Các mức donate nhanh">
+          <button type="button" data-amount="10000">10.000đ</button><button type="button" data-amount="20000">20.000đ</button><button type="button" data-amount="50000">50.000đ</button><button type="button" data-amount="100000">100.000đ</button>
         </div>
-    </header>
-
-    <main class="w-full max-w-lg card-glass rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
-        <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-800">
-            <div class="flex items-center space-x-3">
-                <div class="relative">
-                    <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
-                    <div class="w-3 h-3 bg-emerald-500 rounded-full absolute top-0 left-0 animate-ping opacity-75"></div>
-                </div>
-                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Cổng nhận Agribank</span>
-            </div>
+        <label class="label" for="message">Lời nhắn <span class="optional">Không bắt buộc</span></label>
+        <input class="input" id="message" type="text" maxlength="100" placeholder="Chúc bạn ngày mới vui vẻ">
+        <p class="hint">Mã QR sẽ bao gồm số tiền và lời nhắn bạn nhập.</p>
+        <button class="create" id="create" type="submit"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><path d="M14 14h3v3h-3zm4 4h3v3h-3zm0-4h3m-7 7h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Tạo mã QR VietQR</button>
+      </form>
+      <section class="result" id="result" aria-live="polite" aria-label="Kết quả mã QR">
+        <h3>Quét mã để gửi donate</h3><p class="description" id="description">Mở ứng dụng ngân hàng và quét mã QR này.</p>
+        <div class="qr-frame"><div class="loading" id="loading"><div><div class="spinner" aria-hidden="true"></div>Đang tạo mã QR…</div></div><img id="qr" alt="Mã QR chuyển khoản VietQR"></div>
+        <div class="actions">
+          <a class="action primary" id="download" href="#" download="vietqr-donate.png" aria-disabled="true">↓&nbsp; Tải ảnh QR</a>
+          <button class="action" id="copy" type="button">▢&nbsp; Sao chép thông tin</button>
         </div>
+        <p class="status" id="status" role="status"></p>
+      </section>
+      <p class="footer">Mã QR được tạo qua VietQR. Vui lòng kiểm tra tên người nhận trước khi xác nhận giao dịch.</p>
+    </section>
+  </div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const bank = "agribank", account = "7700205292060", accountName = "LUONG THANH HA";
+  const amountInput = document.querySelector("#amount"), messageInput = document.querySelector("#message");
+  const form = document.querySelector("#donate-form"), result = document.querySelector("#result");
+  const image = document.querySelector("#qr"), loading = document.querySelector("#loading");
+  const create = document.querySelector("#create"), download = document.querySelector("#download");
+  const status = document.querySelector("#status"), toast = document.querySelector("#toast");
+  const quickButtons = [...document.querySelectorAll("[data-amount]")];
+  let qrUrl = "", toastTimer;
+  const digits = value => value.replace(/\D/g, "");
+  const format = value => {
+    const number = digits(value).replace(/^0+(?=\d)/, "");
+    return number ? number.replace(/\B(?=(\d{3})+(?!\d))/g, ".") : "";
+  };
+  const getAmount = () => Number(digits(amountInput.value));
+  const money = value => new Intl.NumberFormat("vi-VN").format(value) + "đ";
 
-        <div class="space-y-5">
-            <div>
-                <div class="flex justify-between items-center mb-1.5">
-                    <label class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Tên của bạn</label>
-                    <button onclick="randomizeName()" class="text-[11px] text-emerald-400 hover:underline flex items-center gap-1">
-                        <i class="fa-solid fa-shuffle"></i> Tên ngẫu nhiên
-                    </button>
-                </div>
-                <input type="text" id="donorName" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-slate-100 text-sm focus:outline-none focus:border-emerald-500 transition" placeholder="Nhập tên hiển thị...">
-            </div>
+  amountInput.addEventListener("input", () => {
+    const position = amountInput.selectionStart;
+    const formatted = format(amountInput.value);
+    const caret = format(amountInput.value.slice(0, position)).length;
+    amountInput.value = formatted;
+    amountInput.setSelectionRange(caret, caret);
+    quickButtons.forEach(button => button.setAttribute("aria-pressed", String(Number(button.dataset.amount) === getAmount())));
+  });
+  quickButtons.forEach(button => button.addEventListener("click", () => {
+    amountInput.value = format(button.dataset.amount);
+    amountInput.dispatchEvent(new Event("input", { bubbles: true }));
+    amountInput.focus();
+  }));
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Chọn nhanh số tiền</label>
-                <div class="grid grid-cols-4 gap-2">
-                    <button onclick="setAmount(10000)" class="py-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 border border-slate-700/50 text-xs font-bold text-slate-300 transition">10K</button>
-                    <button onclick="setAmount(20000)" class="py-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 border border-slate-700/50 text-xs font-bold text-emerald-400 transition">20K</button>
-                    <button onclick="setAmount(50000)" class="py-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 border border-slate-700/50 text-xs font-bold text-slate-300 transition">50K</button>
-                    <button onclick="setAmount(100000)" class="py-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 border border-slate-700/50 text-xs font-bold text-amber-400 transition">100K</button>
-                </div>
-            </div>
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const amount = getAmount();
+    if (!Number.isSafeInteger(amount) || amount <= 0) {
+      amountInput.setCustomValidity("Vui lòng nhập số tiền lớn hơn 0.");
+      amountInput.reportValidity();
+      amountInput.setCustomValidity("");
+      amountInput.focus();
+      return;
+    }
+    const message = messageInput.value.trim();
+    const base = "https://img.vietqr.io/image/" + bank + "-" + account + "-compact2.png";
+    qrUrl = base + "?amount=" + encodeURIComponent(String(amount)) + "&addInfo=" + encodeURIComponent(message) + "&accountName=" + encodeURIComponent(accountName);
+    result.classList.add("visible");
+    image.classList.remove("ready");
+    status.textContent = "";
+    document.querySelector("#description").textContent = money(amount) + (message ? " · " + message : "");
+    loading.classList.add("active");
+    create.disabled = true;
+    create.textContent = "Đang tạo mã QR…";
+    image.onload = () => {
+      loading.classList.remove("active");
+      image.classList.add("ready");
+      create.disabled = false;
+      create.textContent = "Tạo mã QR VietQR";
+      download.href = qrUrl;
+      download.setAttribute("aria-disabled", "false");
+      status.textContent = "Mã QR đã sẵn sàng.";
+    };
+    image.onerror = () => {
+      loading.classList.remove("active");
+      create.disabled = false;
+      create.textContent = "Tạo mã QR VietQR";
+      status.textContent = "Không tải được mã QR. Vui lòng thử lại sau.";
+    };
+    image.src = qrUrl;
+  });
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Số tiền ủng hộ (VNĐ)</label>
-                <div class="relative">
-                    <input type="number" id="amount" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-4 pr-12 py-3 text-slate-100 font-bold text-lg focus:outline-none focus:border-emerald-500 transition" placeholder="20000" value="20000">
-                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-xs">VNĐ</span>
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Lời nhắn gửi kèm</label>
-                <textarea id="message" rows="2" class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-2.5 text-slate-100 text-sm focus:outline-none focus:border-emerald-500 transition resize-none" placeholder="Lời nhắn hoặc lời chúc..."></textarea>
-            </div>
-
-            <button onclick="generateQR()" class="w-full agri-gradient hover:opacity-90 text-white font-bold py-3.5 rounded-xl shadow-lg border border-emerald-500/40 transition flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
-                <i class="fa-solid fa-qrcode text-base"></i>
-                <span>Tạo Mã QR Chuyển Tiền</span>
-            </button>
-        </div>
-
-        <div id="qrContainer" class="hidden mt-8 pt-6 border-t border-slate-800 text-center space-y-4">
-            <div class="inline-block p-3 bg-white rounded-2xl shadow-xl">
-                <img id="qrImage" src="" alt="Mã QR VietQR Agribank" class="w-56 h-56 mx-auto rounded-lg">
-            </div>
-
-            <div class="space-y-1">
-                <p class="text-sm font-semibold text-slate-200">Agribank - 7700205292060</p>
-                <p class="text-xs text-emerald-400 font-bold uppercase">CHỦ TÀI KHOẢN: LUONG THANH HA</p>
-                <p class="text-xs text-slate-400 mt-2">Mở ứng dụng Ngân hàng quét mã để tự động điền số tiền & nội dung.</p>
-            </div>
-        </div>
-    </main>
-
-    <footer class="mt-8 text-center text-xs text-slate-500">
-        <p>© 2026 DONATE System. Tương thích VietQR & Napas247.</p>
-    </footer>
-
-    <script>
-        const randomNames = ["Sơn Tùng", "Minh Tuấn", "Gamer 99", "Ẩn danh", "Thành Trung", "Phương Thảo", "Bảo Long", "Huri Fan"];
-
-        function randomizeName() {
-            document.getElementById('donorName').value = randomNames[Math.floor(Math.random() * randomNames.length)];
-        }
-
-        function setAmount(val) {
-            document.getElementById('amount').value = val;
-        }
-
-        function generateQR() {
-            const name = document.getElementById('donorName').value.trim() || 'An danh';
-            const amount = document.getElementById('amount').value;
-
-            if (!amount || amount < 1000) {
-                alert('Vui lòng nhập số tiền từ 1,000 VNĐ trở lên!');
-                return;
-            }
-
-            const memo = `DONATE ${name}`.substring(0, 25);
-            const qrUrl = `https://img.vietqr.io/image/AGRIBANK-7700205292060-compact2.png?amount=${amount}&addInfo=${encodeURIComponent(memo)}&accountName=LUONG%20THANH%20HA`;
-
-            const qrImg = document.getElementById('qrImage');
-            qrImg.src = qrUrl;
-
-            const container = document.getElementById('qrContainer');
-            container.classList.remove('hidden');
-
-            setTimeout(() => {
-                container.scrollIntoView({ behavior: 'smooth', block: 'end' });
-            }, 100);
-        }
-
-        randomizeName();
-    </script>
+  download.addEventListener("click", async event => {
+    event.preventDefault();
+    if (!qrUrl) return;
+    try {
+      const response = await fetch(qrUrl);
+      if (!response.ok) throw new Error("QR image download failed");
+      const objectUrl = URL.createObjectURL(await response.blob());
+      const link = document.createElement("a");
+      link.href = objectUrl;
+      link.download = "vietqr-donate.png";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+      showToast("Đang tải ảnh QR về máy.");
+    } catch {
+      window.open(qrUrl, "_blank", "noopener");
+      showToast("Ảnh QR đã mở ở tab mới. Bạn có thể lưu ảnh từ đó.");
+    }
+  });
+  const showToast = message => {
+    toast.textContent = message;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+  };
+  document.querySelector("#copy").addEventListener("click", async () => {
+    const amount = getAmount(), message = messageInput.value.trim();
+    const lines = ["Ngân hàng: Agribank", "Số tài khoản: " + account, "Chủ tài khoản: " + accountName];
+    if (amount > 0) lines.push("Số tiền: " + money(amount));
+    if (message) lines.push("Lời nhắn: " + message);
+    try {
+      await navigator.clipboard.writeText(lines.join("\n"));
+      showToast("Đã sao chép thông tin chuyển khoản.");
+    } catch {
+      const temp = document.createElement("textarea");
+      temp.value = lines.join("\n");
+      temp.style.position = "fixed";
+      temp.style.opacity = "0";
+      document.body.appendChild(temp);
+      temp.select();
+      const copied = document.execCommand("copy");
+      temp.remove();
+      showToast(copied ? "Đã sao chép thông tin chuyển khoản." : "Không thể sao chép trên thiết bị này.");
+    }
+  });
+})();
+</script>
 </body>
 </html>
+
